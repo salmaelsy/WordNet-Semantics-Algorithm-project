@@ -21,7 +21,33 @@ namespace Algorithm
 
 
         //Reset Dictionaries for  Dijkstra Algorithm (Modified BFS)
-   
+        public static void Reset_Dictionaries() // O(A+B)
+        {
+            //  A = BFS_Distance_1.Count
+            for (int i = 0; i < BFS_Distance_1.Count; i++) // O(A)
+            {
+                BFS_Color_1[i] = "WHITE";  // O(1)
+                BFS_Distance_1[i] = 0;  // O(1)
+            }
+            //  B = BFS_Distance_2.Count
+            for (int i = 0; i < BFS_Distance_2.Count; i++)  // O(B)
+            {
+                BFS_Color_2[i] = "WHITE"; // O(1)                   
+                BFS_Distance_2[i] = 0;  // O(1)
+            }
+        }
+        //take noun and return List of ID's
+        static List<int> NountoSynsetID(string noun)  // O(1)
+        {
+            List<int> ides = synsetsIdList[noun];  // O(1)
+            return ides;  // O(1)
+        }
+        //take id and return list of nouns on it
+        static List<object> SynsetIdToNoun(int id) // O(1)
+        {
+            List<object> Nouns = synsets[id];  // O(1)
+            return Nouns;  // O(1)
+        }
 
         //BfS
         static void Breadth_Fisrt_S(Dictionary<object, List<object>> Adj, List<int> rootID, bool wOne)
