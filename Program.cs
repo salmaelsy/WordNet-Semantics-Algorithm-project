@@ -144,12 +144,161 @@ namespace Algorithm
 
         static void Main(string[] args)
         {
-            
-           
+            //Read the first file
+            using (StreamReader sr = File.OpenText(@"C:\Users\Salma\Downloads\[5] WordNet Semantics\Testcases\Complete\3-Large\Case3_82K_300K_5000RQ\Input\1synsets.txt"))
+            {
+                string line = string.Empty;
+                while ((line = sr.ReadLine()) != null)  // O(N)
+                {
+                    string[] singleLine = line.Split(',');
+                    string[] arr = singleLine[1].Split(" ");
+                    List<object> SynsetWord = new List<object>();
+                    foreach (string r in arr)
+                    {
+                        SynsetWord.Add(r);
+                    }
+                    synsets.Add(int.Parse(singleLine[0]), SynsetWord);
+                    BFS_Color_1[int.Parse(singleLine[0])] = "WHITE";
+                    BFS_Color_2[int.Parse(singleLine[0])] = "WHITE";
+                    parent_1[int.Parse(singleLine[0])] = -1;
+                    parent_2[int.Parse(singleLine[0])] = -1;
+                    BFS_Distance_1[int.Parse(singleLine[0])] = -1;
+                    BFS_Distance_2[int.Parse(singleLine[0])] = -1;
+                }
+            }
+            using (StreamReader sr = File.OpenText(@"C:\Users\Salma\Downloads\[5] WordNet Semantics\Testcases\Complete\3-Large\Case3_82K_300K_5000RQ\Input\1synsets.txt"))
+            {
+                string line = string.Empty;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] singleLine = line.Split(',');
+                    string[] arr = singleLine[1].Split(" ");
+                    foreach (string r in arr)
+                    {
+                        List<int> ListOfId = new List<int>();
+                        if (!synsetsIdList.ContainsKey(r))
+                        {
+
+                            ListOfId.Add(int.Parse(singleLine[0]));
+                            synsetsIdList.Add(r, ListOfId);
+                        }
+                        else if (synsetsIdList.ContainsKey(r))
+                        {
+                            List<int> ides = synsetsIdList[r];
+                            ides.Add(int.Parse(singleLine[0]));
+                            synsetsIdList[r] = ides;
+                        }
+                    }
+                }
+            }
+
+
+            //Read second file
+            using (StreamReader sr = File.OpenText(@"C:\Users\Salma\Downloads\[5] WordNet Semantics\Testcases\Complete\3-Large\Case3_82K_300K_5000RQ\Input\2hypernyms.txt"))
+            {
+                string line = string.Empty;
+                while ((line = sr.ReadLine()) != null)  // O(N)
+                {
+                    string[] singleLine = line.Split(',');  // O(1)
+                    object key = int.Parse(singleLine[0]);  // O(1)
+
+                    // S = singleLine.Length
+                    for (int i = 0; i < singleLine.Length; i++)  // O(S)
+                    {
+                        if (!(hyhypernyms.ContainsKey(key)))
+                        {
+                            List<object> ls = new List<object>();  // O(1)
+                            ls.Add(int.Parse(singleLine[i]));  // O(1)
+                            hyhypernyms[key] = ls;  // O(1)
+                        }
+                        else
+                        {
+                            List<object> ls = hyhypernyms[key];  // O(1)
+                            ls.Add(int.Parse(singleLine[i]));  // O(1)
+                        }
+                    }
+                }
+            }
+
+
+            //  Read third File and write the output in file
+
+            List<int>[] idOfSyn = new List<int>[2];  // O(1)
+            StreamWriter Output1 = new StreamWriter(@"D:\ ot.txt");  // O(1)
+
+            var timer = new System.Diagnostics.Stopwatch();  // O(1)
+            timer.Start();
+
+            using (StreamReader sr = File.OpenText(@"C:\Users\Salma\Downloads\[5] WordNet Semantics\Testcases\Complete\3-Large\Case3_82K_300K_5000RQ\Input\3RelationsQueries.txt"))
+            {
+                string line = string.Empty;
+                while ((line = sr.ReadLine()) != null)  // O(N)
+                {
+                    int[] Result = new int[2];  // O(1)
+                    string[] singleLine = line.Split(',');  // O(1)
+
+                    if (singleLine.Length != 2)
+                        continue;
+                    Reset_Dictionaries();  // O(A+B)
+                    Result = GetShortPath(singleLine[0], singleLine[1]);  //
+                    Output1.WriteLine(Result[0] + "," + string.Join(" ", SynsetIdToNoun(Result[1])));  // O(1)
+                }
+            }
+            Output1.Close();
+            timer.Stop();
+            Console.WriteLine("Time Taken in Output1 = " + timer.Elapsed);
+
+
+            //  Read Forth File and write the output in file
+
+            // var timer2 = new System.Diagnostics.Stopwatch();
+            // timer2.Start();
+            // StreamWriter sww = new StreamWriter(@"D:\ ot2.txt");
+            // using (StreamReader sr = File.OpenText(@"C:\Users\Salma\Downloads\[5] WordNet Semantics\Testcases\Complete\3-Large\Case3_82K_300K_5000RQ\Input\4OutcastQueries.txt"))
+            // {
+            //     string line = string.Empty;  // O(1)
+            //     while ((line = sr.ReadLine()) != null)  // O(N)
+            //     {
+            //         string[] singleLine = line.Split(',');  // O(1)
+            //         if (singleLine.Length == 1)
+            //             continue;
+
+            //       //  S = singleLine.Length;
+            //         int[] distanc = new int[singleLine.Length];  // O(1)
+            //         int MaxDIST = -1;  // O(1)
+            //         string value = "";  // O(1)
+
+            //         for (int i = 0; i < singleLine.Length; i++)  // O(S)
+            //         {
+            //             for (int j = 0; j < singleLine.Length; j++)  // O(S)
+            //             {
+            //                 if (i == j)
+            //                 {
+            //                     continue;
+            //                 }
+            //                 Reset_Dictionaries();  // O(A+B)
+            //                 int[] ee = GetShortPath(singleLine[i], singleLine[j]);
+            //                 distanc[i] += ee[0];  // O(1)
+            //             }
+            //             if (distanc[i] > MaxDIST)
+            //             {
+            //                 MaxDIST = distanc[i];  // O(1)
+            //                 value = singleLine[i];  // O(1)
+            //             }
+
+
+            //         }
+
+            //         sww.WriteLine(value);  // O(1)
+
+            //     }
+            // }
+            // sww.Close();
+            // timer2.Stop();
+            // Console.WriteLine("Time Taken in Output2 = " + timer2.Elapsed);
         }
     }
 }
-
 
 
 
