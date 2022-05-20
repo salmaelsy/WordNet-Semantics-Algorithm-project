@@ -1,0 +1,16 @@
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.exe
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.deps.json
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.runtimeconfig.json
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.runtimeconfig.dev.json
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.dll
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\ref\C# Project.dll
+C:\Users\Salma\Desktop\C# Project\bin\Debug\net5.0\C# Project.pdb
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.csproj.AssemblyReference.cache
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.AssemblyInfoInputs.cache
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.AssemblyInfo.cs
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.csproj.CoreCompileInputs.cache
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.dll
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\ref\C# Project.dll
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.pdb
+C:\Users\Salma\Desktop\C# Project\obj\Debug\net5.0\C# Project.genruntimeconfig.cache
