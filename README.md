@@ -12,7 +12,8 @@ WordNet is a semantic lexicon for the English language that computational lingui
 ## WordNet is a Graph!
 
 As shown in the Figure: Nouns in WordNet can be represented as a directed graph. Each vertex v is an integer that represents a synset, and each directed edge v→w represents the is-a relationship (v is-a w). A small subgraph of the WordNet digraph appears below.
-![Screenshot 2023-08-09 030120](https://github.com/salmaelsy/WordNet-Semantics/assets/62834497/7242acce-8528-4b37-80ac-0d4b16b104bc)
+![Screenshot 2023-08-09 030120](https://github.com/salmaelsy/WordNet-Semantics-Algorithm-project/assets/62834497/69892748-5c43-41ad-ab64-040ad0645aa7)
+
 
 
 ## $For \space More \space Details$ 
